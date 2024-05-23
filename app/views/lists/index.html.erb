@@ -1,0 +1,60 @@
+   <style>
+    .hero {
+      background-image: url('https://nextstage-am.com/wp-content/uploads/2021/04/Banner-Cap-Cinema.png?x83623');
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      color: white;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .hero h1 {
+      font-size: 4rem;
+    }
+    .hero h2 {
+      font-size: 2rem;
+    }
+    .card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">MovieApp</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <%= link_to 'My lists', lists_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'New list', new_list_path, class: 'nav-link' %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <h1>Save any kind of movies</h1>
+    <h2>Classic</h2>
+  </div>
+
+  <div class="container my-5">
+    <h2>My Lists</h2>
+    <div class="row">
+      <% @lists.each do |list| %>
+        <div class="col-md-4">
+          <div class="card mb-4">
+            <%= image_tag 'https://img.freepik.com/psd-gratuit/pret-pour-banniere-du-cinema-illustration-3d_1419-2558.jpg?w=1380&t=st=1716473231~exp=1716473831~hmac=d1a07ce5fa592252b56ea53a90c04ecc9c7364737c3677084f5d988721a09910', class: 'card-img-top' %>
+            <div class="card-body text-center">
+              <h5 class="card-title"><%= list.name %></h5>
+              <%= link_to list.name, list_path(list), class: 'btn btn-primary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to 'Create a movie list', new_list_path, class: 'btn btn-success' %>
+  </div>
